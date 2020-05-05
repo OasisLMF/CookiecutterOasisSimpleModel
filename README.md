@@ -42,122 +42,54 @@ The project structure is contained in the repo folder named <a href="https://git
 
 For the current state of the <a href="https://github.com/OasisLMF/cookiecutter-OasisModel/tree/master/%7B%7Bcookiecutter.project_slug%7D%7D" target="_blank">`{{cookiecutter.project_slug}}`</a> directory you should see the following project structure in the place where you ran the command (assuming you used default boilerplate values for the project name, organization and model name):
 
-    OM/
-    ├── Dockerfile.oasislmf_om_keys_server
-    ├── Dockerfile.oasislmf_om_model_execution_worker
-    ├── LICENSE
-    ├── README.md
-    ├── flamingo/
-    │   └── generic_model/
-    │       ├── Files/
-    │       │   ├── MappingFiles/
-    │       │   │   ├── Generic_Earthquake_CanLoc_BToModelLoc.mfd
-    │       │   │   ├── Generic_Earthquake_SourceLocToCanLoc_A.mfd
-    │       │   │   ├── Generic_Flood_CanLoc_BToModelLoc.mfd
-    │       │   │   ├── Generic_Flood_SourceLocToCanLoc_A.mfd
-    │       │   │   ├── Generic_SourceAccToCanAcc_A.mfd
-    │       │   │   ├── Generic_Windstorm_CanLoc_BToModelLoc.mfd
-    │       │   │   └── Generic_Windstorm_SourceLocToCanLoc_A.mfd
-    │       │   ├── TransformationFiles/
-    │       │   │   ├── MappingMapToGeneric_CanAcc_A.xslt
-    │       │   │   ├── MappingMapToGeneric_Earthquake_CanLoc_A.xslt
-    │       │   │   ├── MappingMapToGeneric_Earthquake_ModelLoc.xslt
-    │       │   │   ├── MappingMapToGeneric_Flood_CanLoc_A.xslt
-    │       │   │   ├── MappingMapToGeneric_Flood_ModelLoc.xslt
-    │       │   │   ├── MappingMapToGeneric_Windstorm_CanLoc_A.xslt
-    │       │   │   └── MappingMapToGeneric_Windstorm_ModelLoc.xslt
-    │       │   └── ValidationFiles/
-    │       │       ├── Generic_CanAcc_A.xsd
-    │       │       ├── Generic_CanAcc_B.xsd
-    │       │       ├── Generic_Earthquake_CanLoc_A.xsd
-    │       │       ├── Generic_Earthquake_CanLoc_B.xsd
-    │       │       ├── Generic_Earthquake_ModelLoc.xsd
-    │       │       ├── Generic_Earthquake_SourceLoc.xsd
-    │       │       ├── Generic_Flood_CanLoc_A.xsd
-    │       │       ├── Generic_Flood_CanLoc_B.xsd
-    │       │       ├── Generic_Flood_ModelLoc.xsd
-    │       │       ├── Generic_Flood_SourceLoc.xsd
-    │       │       ├── Generic_SourceAcc.xsd
-    │       │       ├── Generic_Windstorm_CanLoc_A.xsd
-    │       │       ├── Generic_Windstorm_CanLoc_B.xsd
-    │       │       ├── Generic_Windstorm_ModelLoc.xsd
-    │       │       └── Generic_Windstorm_SourceLoc.xsd
-    │       └── SQLFiles/
-    ├── keys_data/
-    │   └── OM/
-    │       └── ModelVersion.csv
-    ├── keys_server_config/
-    │   ├── apache2.conf
-    │   ├── oasis.conf
-    │   └── oasis.wsgi
-    ├── model_data/
-    │   └── OM/
-    │       ├── ModelVersion.csv
-    │       ├── damage_bin_dict.bin
-    │       ├── damage_bin_dict.csv
-    │       ├── data.csv
-    │       ├── events.bin
-    │       ├── events.csv
-    │       ├── footprint.bin
-    │       ├── footprint.csv
-    │       ├── footprint.idx
-    │       ├── occurrence.bin
-    │       ├── occurrence.csv
-    │       ├── random.bin
-    │       ├── random.csv
-    │       ├── returnperiods.bin
-    │       ├── returnperiods.csv
-    │       ├── vulnerability.bin
-    │       └── vulnerability.csv
-    ├── oasis_keys_server/
-    │   ├── KeysServer.ini
-    │   ├── LICENSE
-    │   ├── README.md
-    │   ├── __init__.py
-    │   ├── __init__.py.base
-    │   ├── apache_config/
-    │   │   ├── apache2.conf
-    │   │   ├── oasis.conf
-    │   │   └── oasis.wsgi
-    │   ├── builtin/
-    │   │   ├── __init__.py
-    │   │   └── app.py
-    │   ├── custom/
-    │   │   ├── __init__.py
-    │   │   └── app.py
-    │   ├── docker/
-    │   │   ├── Dockerfile.builtin_keys_server
-    │   │   └── Dockerfile.custom_keys_server
-    │   ├── docs/
-    │   ├── requirements.txt
-    │   ├── startup.sh
-    │   └── tests/
-    │       ├── KeysServerTests.ini
-    │       ├── KeysServerTests.py
-    │       ├── __init__.py
-    │       └── requirements.txt
-    ├── src/
-    │   ├── keys_server/
-    │   │   ├── OM/
-    │   │   │   ├── KeysServer.ini
-    │   │   │   ├── OMKeysLookup.py
-    │   │   │   ├── __init__.py
-    │   │   │   ├── requirements.txt
-    │   │   │   └── utils.py
-    │   │   ├── __init__.py
-    │   │   ├── __init__.py.base
-    │   │   ├── requirements.txt
-    │   │   └── utils.py
-    │   └── model_execution_worker/
-    │       └── OM/
-    │           ├── __init__.py
-    │           └── supplier_model_runner.py
-    └── tests/
-        └── keys_server_tests/
-            └── data/
-                └── OM/
-                    ├── KeysServerTests.ini
-                    └── ModelVersion.csv
+```
+OasisModel/
+├── jenkins
+│   └── om.groovy
+├── keys_data
+│   └── OM
+│       └── ModelVersion.csv
+├── LICENSE
+├── meta-data
+│   ├── model_settings.json
+│   └── oasis_version.json
+├── model_data
+│   └── OM
+│       ├── damage_bin_dict.bin
+│       ├── damage_bin_dict.csv
+│       ├── data.csv
+│       ├── events.bin
+│       ├── events.csv
+│       ├── footprint.bin
+│       ├── footprint.csv
+│       ├── footprint.idx
+│       ├── ModelVersion.csv
+│       ├── occurrence.bin
+│       ├── occurrence.csv
+│       ├── random.bin
+│       ├── random.csv
+│       ├── returnperiods.bin
+│       ├── returnperiods.csv
+│       ├── vulnerability.bin
+│       └── vulnerability.csv
+├── oasislmf.json
+├── README.md
+├── src
+│   └── keys_server
+│       └── OM
+│           ├── __init__.py
+│           └── OMKeysLookup.py
+└── tests
+    ├── autotest-config.ini
+    ├── inputs
+    │   ├── analysis_settings.json
+    │   └── oed_example
+    │       ├── account.csv
+    │       ├── location.csv
+    │       ├── ri_info.csv
+    │       └── ri_scope.csv
+    └── testing_readme.md
+```
 
 ## Documentation
 * <a href="https://oasislmf.github.io">General Oasis documentation</a>

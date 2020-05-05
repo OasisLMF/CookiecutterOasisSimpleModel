@@ -17,9 +17,6 @@ from oasislmf.model_preparation.lookup import OasisBaseKeysLookup
 from oasislmf.data.utils import get_ids
 from oasislmf.utils.log import oasis_log
 
-# Model-specific subpackage imports
-from .utils import *
-
 class {{cookiecutter.model_identifier.replace(' ', '').upper()}}KeysLookup(OasisBaseKeysLookup):
     """
     Model-specific keys lookup logic.
@@ -47,8 +44,21 @@ class {{cookiecutter.model_identifier.replace(' ', '').upper()}}KeysLookup(Oasis
     @oasis_log()
     def process_locations(self, loc_df):
         """
-        Process location rows - passed in as a pandas dataframe. Use ``yield``
+        Process location rows in a single thread - passed in as a pandas dataframe. Use ``yield``
         to generate keys dicts. DO NOT USE ``return``.
+        """
+        loc_df.columns = loc_df.columns.str.lower()
+        if 'loc_id' not in loc_df:
+            loc_df['loc_id'] = get_ids(loc_df, ['portnumber', 'accnumber', 'locnumber'])
+
+        # Rest of the code here
+
+
+    @oasis_log()
+    def process_locations_multiproc(self, loc_df):
+        """
+        Process location rows using multiprocessing - passed in as a pandas dataframe. Use ``return``
+        to generate keys using a list of lookup records. DO NOT USE ``yield``.
         """
         loc_df.columns = loc_df.columns.str.lower()
         if 'loc_id' not in loc_df:
