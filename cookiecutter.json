@@ -7,6 +7,6 @@
   "primary_language": "Python",
   "organization": "OasisLMF",
   "model_identifier": "OM",
-  "model_version": "0.0.0.1",
+  "model_version": "0.0.0",
   "model_lookup_type": "custom"
 }

@@ -1,0 +1,10 @@
+{
+    "model_settings_json": "meta-data/model_settings.json",
+    "lookup_data_dir": "keys_data/{{cookiecutter.model_identifier.replace('\'' '\'', '\'''\'').upper()}}",
+    "model_data_dir": "model_data/{{cookiecutter.model_identifier.replace('\'' '\'', '\'''\'').upper()}}",
+    "analysis_settings_json": "tests/inputs/analysis_settings.json",
+    "oed_location_csv": "tests/inputs/oed_example/location.csv",
+    "oed_accounts_csv": "tests/inputs/oed_example/account.csv",
+    "oed_info_csv": "tests/inputs/oed_example/ri_info.csv",
+    "oed_scope_csv": "tests/inputs/oed_example/ri_scope.csv"
+}
